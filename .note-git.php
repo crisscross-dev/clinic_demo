@@ -30,8 +30,10 @@ git branch -M main
 ste 5: add remote repository
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 
+type so it wont conflict to github repository
+git add .gitignore README.md
+
+git commit -m "Resolve gitignore merge conflict"
+
 step 6:
 git push -u origin main
-
-if error in step 6: type and do again
-git pull origin main --allow-unrelated-histories
