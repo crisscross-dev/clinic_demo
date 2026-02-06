@@ -1,0 +1,142 @@
+:root {
+    --hf-input-font: clamp(0.9rem, 1.4vw, 1rem);
+    --hf-label-font: clamp(0.9rem, 1.3vw, 1rem);
+    --hf-padding-y: clamp(0.5rem, 1.6vw, 0.65rem);
+    --hf-padding-x: clamp(0.65rem, 2vw, 0.9rem);
+    --hf-radius: 10px;
+}
+
+.btn:hover {
+    color: white;
+}
+
+/* Scope all overrides to health form to avoid global impact */
+.health-form .form-label {
+    font-size: var(--hf-label-font);
+}
+.health-form .form-control,
+.health-form .form-select {
+    font-size: var(--hf-input-font);
+    padding: var(--hf-padding-y) var(--hf-padding-x);
+    border-radius: var(--hf-radius);
+}
+
+/* Form-check sizing */
+.health-form .form-check-input {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-top: 0.2rem;
+}
+.health-form .form-check-label {
+    font-size: var(--hf-input-font);
+}
+
+/* Card spacing */
+.health-form .card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+.health-form .card-header {
+    padding: 0.75rem 1rem;
+}
+.health-form .card-body {
+    padding: 1rem;
+}
+
+/* Button size */
+.health-form .btn {
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+}
+
+.accordion-button {
+    background-color: aquamarine !important;
+}
+
+/* Grid gutters a bit tighter on small screens */
+@media (max-width: 576px) {
+    .health-form .row.g-3 {
+        --bs-gutter-x: 0.75rem;
+        --bs-gutter-y: 0.75rem;
+    }
+}
+
+/* Completely disable entire consent section when data exists */
+.consent-section-disabled {
+    pointer-events: none !important;
+    user-select: none !important;
+    opacity: 0.7;
+    position: relative;
+}
+
+.consent-section-disabled::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(248, 249, 250, 0.8);
+    z-index: 10;
+    pointer-events: all;
+    cursor: not-allowed;
+}
+
+.consent-section-disabled .consent-label,
+.consent-section-disabled input,
+.consent-section-disabled canvas,
+.consent-section-disabled button {
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+    user-select: none !important;
+}
+
+.consent-section-disabled .consent-label {
+    opacity: 0.8;
+    background-color: #f8f9fa !important;
+    border-color: #dee2e6 !important;
+}
+
+/* Disabled consent fields styling */
+.consent-label.disabled {
+    opacity: 0.6;
+    background-color: #f8f9fa !important;
+    border-color: #dee2e6 !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.consent-label.disabled input[type="checkbox"] {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.consent-label.disabled:hover {
+    background-color: #f8f9fa !important;
+    border-color: #dee2e6 !important;
+}
+
+/* Disabled input field styling */
+input[readonly][disabled] {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Success badge styling for completed consent */
+.badge.bg-success {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Disabled signature container */
+.signature-container.disabled-signature {
+    opacity: 0.8;
+    background-color: #f8f9fa !important;
+}
+
+.signature-container.disabled-signature img {
+    filter: grayscale(20%);
+}

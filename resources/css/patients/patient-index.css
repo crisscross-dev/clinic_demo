@@ -1,0 +1,601 @@
+        /* Master List — Patients Table Styles */
+
+        /* Layout wrappers */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            overflow-y: hidden;
+        }
+
+        /* remove page vertical scroll on these pages */
+        .main-content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            height: 100dvh;
+            /* occupy full viewport height */
+            overflow: hidden;
+            /* confine scroll to inner containers */
+        }
+
+        .records-scrollable {
+            /* Flexible scroll area that fills remaining height under header */
+            flex: 1 1 auto;
+            min-height: 0;
+            /* allow child to shrink below content height */
+            /* Let the inner container handle scrolling to keep sticky reliable */
+            overflow: hidden;
+            /* defer scroll to table container */
+        }
+
+        .table-container {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            /* gray-200 */
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            /* Scrolling happens here so thead sticky anchors correctly */
+            overflow: auto;
+            /* scroll only inside table container */
+            max-height: 68vh;
+            min-height: 68vh;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Smaller search input */
+        .form-control-head {
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            width: 180px;
+            /* reduced width */
+        }
+
+        .form-control-head:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+        }
+
+        .dropdown-wrapper {
+            position: relative;
+            z-index: 1000;
+            /* Keep wrapper above nearby elements */
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            min-width: 220px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            /* gray-200 */
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            padding: 6px;
+            z-index: 9999;
+            /* Ensure dropdown overlays table and sticky headers */
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 6px 8px;
+            border-radius: 6px;
+            color: #111827;
+            text-decoration: none;
+            /* remove underline */
+        }
+
+        .dropdown-menu a:hover {
+            background: #f3f4f6;
+            text-decoration: none;
+            /* keep underline off on hover */
+        }
+
+        .dropdown-menu a.active {
+            background: #eff6ff;
+            /* blue-50 */
+            color: #1d4ed8;
+            /* blue-700 */
+        }
+
+        /* Upward dropdown */
+
+        .search-input {
+            width: 100%;
+            max-width: 280px;
+            padding: 8px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+        }
+
+        /* Table */
+        .patient-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: fixed;
+            /* Ensures consistent column widths for thead/tbody alignment */
+        }
+
+        .patient-table,
+        .patient-table th,
+        .patient-table td {
+            box-sizing: border-box;
+            /* Keep padding/border from shifting widths */
+        }
+
+        .patient-table thead th {
+            position: -webkit-sticky;
+            /* Safari support */
+            position: sticky;
+            top: 0;
+            background: #207cca;
+            color: white;
+            font-weight: 600;
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 100;
+            /* Higher z-index to ensure it stays on top */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Add shadow to make it more visible when sticky */
+        }
+
+        .table-pending thead th {
+            background: linear-gradient(to bottom, #ffd78c, #ffb347);
+            color: #333;
+        }
+
+        /* Make thead itself sticky for extra robustness */
+        .patient-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 101;
+            /* slightly above th to ensure consistent stacking */
+            background: #207cca;
+        }
+
+        /* Ensure the table itself doesn't interfere with sticky positioning */
+        .patient-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: fixed;
+            /* Ensures consistent column widths for thead/tbody alignment */
+            position: relative;
+            /* Create stacking context for sticky headers */
+        }
+
+        .patient-table tbody td {
+            padding: 8px 10px;
+            color: #111827;
+            /* gray-900 */
+            vertical-align: middle;
+            font-size: 14px;
+            line-height: 2;
+            border-bottom: 1px solid #bec2c9;
+        }
+
+        .patient-table tbody tr:hover {
+            background: #e2e8f0;
+        }
+
+        /* Column sizing */
+        /* # */
+        .patient-table th:nth-child(1),
+        .patient-table td:nth-child(1) {
+            width: 7%;
+            text-align: center;
+        }
+
+        /* Name */
+        .patient-table th:nth-child(2),
+        .patient-table td:nth-child(2) {
+            width: 20%;
+        }
+
+        /* Department */
+        .patient-table th:nth-child(3),
+        .patient-table td:nth-child(3) {
+            width: 12%;
+        }
+
+        /* Course/Section */
+        .patient-table th:nth-child(4),
+        .patient-table td:nth-child(4) {
+            width: 18%;
+        }
+
+        /* Contact */
+        .patient-table th:nth-child(5),
+        .patient-table td:nth-child(5) {
+            width: 12%;
+        }
+
+        /* Address */
+        .patient-table th:nth-child(6),
+        .patient-table td:nth-child(6) {
+            width: 20%;
+        }
+
+        /* Actions */
+        .patient-table th:nth-child(7),
+        .patient-table td:nth-child(7) {
+            width: 10vh;
+            text-align: center;
+        }
+
+        /* Utilities */
+        .text-truncate {
+            display: block;
+            max-width: 360px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .text-muted {
+            color: #6b7280;
+            /* gray-500 */
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Action buttons (if partial uses these) */
+        .action-buttons {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons .btn {
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            border: 1px solid transparent;
+            transition: background-color 0.15s ease, color 0.15s ease,
+                border-color 0.15s ease;
+            cursor: pointer;
+        }
+
+        /* Actions dropdown (gear) */
+        .actions-dropdown {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .actions-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border: 1px solid #d1d5db;
+            /* gray-300 */
+            border-radius: 6px;
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+        .actions-toggle:hover {
+            background: #f9fafb;
+        }
+
+        .actions-toggle img {
+            display: block;
+        }
+
+        .actions-menu {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 6px);
+            min-width: 180px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            /* gray-200 */
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            padding: 6px;
+            z-index: 10000;
+        }
+
+        .actions-menu .btn,
+        .actions-menu a,
+        .actions-menu button,
+        .actions-menu .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            text-align: left;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 0;
+            background: transparent;
+            color: #111827;
+            text-decoration: none;
+        }
+
+        .actions-menu .btn:hover,
+        .actions-menu a:hover,
+        .actions-menu button:hover,
+        .actions-menu .menu-item:hover {
+            background: #f3f4f6;
+            text-decoration: none;
+        }
+
+        /* Adapt bootstrap-like group into stacked menu */
+        .actions-menu .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .actions-menu form {
+            margin: 0;
+        }
+
+        .actions-menu .btn i,
+        .actions-menu .menu-item i {
+            margin-right: 8px;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Keep the Actions column compact */
+        .patient-table th:nth-child(7),
+        .patient-table td:nth-child(7) {
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        /* Optional button color helpers */
+        .btn-view {
+            background: #eff6ff;
+            /* blue-50 */
+            color: #1d4ed8;
+            /* blue-700 */
+            border-color: #bfdbfe;
+            /* blue-200 */
+        }
+
+        .btn-view:hover {
+            background: #dbeafe;
+            /* blue-100 */
+        }
+
+        .btn-edit {
+            background: #ecfdf5;
+            /* emerald-50 */
+            color: #047857;
+            /* emerald-700 */
+            border-color: #a7f3d0;
+            /* emerald-200 */
+        }
+
+        .btn-edit:hover {
+            background: #d1fae5;
+            /* emerald-100 */
+        }
+
+        .btn-delete {
+            background: #fef2f2;
+            /* red-50 */
+            color: #b91c1c;
+            /* red-700 */
+            border-color: #fecaca;
+            /* red-200 */
+        }
+
+        .btn-delete:hover {
+            background: #fee2e2;
+            /* red-100 */
+        }
+
+        /* Defensive: ensure mobile sidebar/backdrop z-index stays below pagination footer */
+        @media (max-width: 768px) {
+
+            /* Force the sidebar and overlay above the footer */
+            /* Ensure overlay is underneath the sidebar so sidebar buttons remain clickable */
+            .sidebar-overlay {
+                z-index: 10900 !important;
+                /* backdrop under the sidebar */
+            }
+
+            .sidebar {
+                z-index: 11000 !important;
+                /* sidebar sits above the overlay */
+            }
+        }
+
+        .modal-header-green {
+            background: linear-gradient(to bottom right,
+                    #006400,
+                    #32cd32);
+            /* dark green → light green */
+            color: #fff;
+        }
+
+        .modal-header-blue {
+            background: linear-gradient(to bottom right, #1e5799, #207cca);
+            color: #fff;
+        }
+
+        .modal-header-orange {
+            background: linear-gradient(to bottom right, #ffd78c, #ffb74d);
+            color: #333;
+            /* dark text for readability */
+        }
+
+        .icon-custom {
+            color: #495057;
+        }
+
+        /* Mobile Responsive Styles - Below 600px */
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 0.5rem;
+                height: 100vh;
+            }
+
+            /*         
+            .header-meta {
+                display: none !important;
+            } */
+
+            .bulk-actions-header {
+                display: none !important;
+            }
+
+            .list-header-right {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .list-header>div:first-child {
+                order: 2;
+            }
+
+            .list-header-right {
+                order: 1;
+            }
+
+            .list-header-right button,
+            .list-header-right .btn {
+                width: 100%;
+                justify-content: center;
+                margin: 0 !important;
+            }
+
+            .records-scrollable {
+                flex: 1 1 auto;
+                min-height: calc(100vh - 250px);
+                max-height: calc(100vh - 250px);
+                overflow: hidden;
+            }
+
+            .table-container {
+                /* Scroll happens here to keep sticky headers working */
+                max-height: calc(100vh - 285px);
+                min-height: 285px;
+                height: auto;
+                overflow-x: auto;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .patient-table {
+                min-width: 900px;
+                width: 100%;
+            }
+
+            .patient-table th,
+            .patient-table td {
+                white-space: nowrap;
+            }
+
+            .search-input {
+                max-width: 100%;
+            }
+
+            .form-control-head {
+                width: 100%;
+            }
+
+            .list-header form {
+                width: 100%;
+            }
+
+            .list-header form button {
+                width: auto;
+            }
+        }
+
+        /* Extra Small Devices - Below 400px */
+        @media (max-width: 400px) {
+            .main-content {
+                padding: 0.25rem;
+                height: 100vh;
+            }
+
+            .records-scrollable {
+                min-height: calc(100vh - 240px);
+                max-height: calc(100vh - 240px);
+                overflow: hidden;
+            }
+
+            .table-container {
+                /* Scroll happens here to keep sticky headers working */
+                max-height: calc(100vh - 285px);
+                min-height: 285px;
+                height: auto;
+                overflow-x: auto;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .patient-table {
+                min-width: 900px;
+                width: 100%;
+            }
+
+            /* Reduce font sizes and tighten spacing for very small screens */
+            .patient-table th,
+            .patient-table td {
+                white-space: nowrap;
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+
+            .patient-table tbody td {
+                line-height: 1.3;
+            }
+
+            /* Shorten truncation width so names & addresses wrap earlier */
+            .text-truncate {
+                max-width: 200px;
+            }
+
+            /* Make header meta and controls slightly smaller to fit */
+            .header-meta,
+            .header-meta strong {
+                font-size: 12px;
+            }
+
+            .list-header-right button,
+            .list-header-right .btn {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            /* Slightly smaller action toggle so rows look compact */
+            .actions-toggle {
+                width: 28px;
+                height: 28px;
+            }
+        }

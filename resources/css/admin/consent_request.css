@@ -1,0 +1,597 @@
+/* Consent Request Table Styles - Based on pending.css */
+
+/* Layout wrappers */
+html,
+body {
+    height: 100%;
+}
+body {
+    overflow-y: hidden;
+}
+.main-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.records-scrollable {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.table-container {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    overflow: auto;
+    max-height: 68vh;
+    min-height: 68vh;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Form control */
+.form-control-head {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    width: 180px;
+}
+
+.form-control-head:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+/* List header */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.list-header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Header meta styling */
+.header-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.header-meta .divider {
+    color: #dee2e6;
+    margin: 0 4px;
+}
+
+/* Bulk actions in header */
+.bulk-actions-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    animation: slideInRight 0.3s ease-out;
+}
+
+.bulk-actions-header .btn-sm {
+    padding: 4px 12px;
+    font-size: 0.875rem;
+}
+
+.bulk-actions-header .selected-count {
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Table styles */
+.patient-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    position: relative;
+}
+
+.patient-table thead th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: #207cca;
+    color: white;
+    font-weight: 600;
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-consent thead th {
+    background: linear-gradient(to bottom, #1e5799, #207cca);
+    color: white;
+}
+
+.patient-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 101;
+}
+
+.patient-table tbody td {
+    padding: 8px 10px;
+    color: #111827;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 2;
+    border-bottom: 1px solid #bec2c9;
+}
+
+.patient-table tbody tr:hover {
+    background: #e2e8f0;
+}
+
+/* Column sizing for consent request table - 6 columns total */
+/* Checkbox column */
+.patient-table th:nth-child(1),
+.patient-table td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+
+/* # column */
+.patient-table th:nth-child(2),
+.patient-table td:nth-child(2) {
+    width: 60px;
+    text-align: center;
+}
+
+/* Student Name column */
+.patient-table th:nth-child(3),
+.patient-table td:nth-child(3) {
+    width: 25%;
+}
+
+/* Department column */
+.patient-table th:nth-child(4),
+.patient-table td:nth-child(4) {
+    width: 20%;
+}
+
+/* Course/Section column */
+.patient-table th:nth-child(5),
+.patient-table td:nth-child(5) {
+    width: 25%;
+}
+
+/* Actions column */
+.patient-table th:nth-child(6),
+.patient-table td:nth-child(6) {
+    width: 150px;
+    text-align: center;
+}
+
+/* Utilities */
+.text-truncate {
+    display: block;
+    max-width: 360px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-muted {
+    color: #6b7280;
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Checkbox styling */
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.form-check-input:indeterminate {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.patient-table th:first-child,
+.patient-table td:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Badge styles */
+.lock-badge {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+}
+
+/* SweetAlert2 Custom Styles */
+.btn-space {
+    margin: 0 4px !important;
+}
+
+.swal2-html-container .list-group-item {
+    border-left: 3px solid #207cca;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+}
+
+.swal2-html-container .list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+.swal2-html-container .list-group-item h6 {
+    color: #207cca;
+    font-weight: 600;
+}
+
+/* Icon-only view button styling for consistency with pending page */
+.icon-action-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.icon-action-btn i {
+    color: #495057;
+    font-size: 1.12rem;
+    line-height: 1;
+}
+
+.icon-action-btn:hover {
+    background: rgba(13, 110, 253, 0.06);
+}
+
+.view-request-btn {
+    line-height: 0;
+    color: #d47a0bff;
+}
+
+/* ===========================
+   PAGINATION FOOTER LAYOUT
+   =========================== */
+.pagination-footer {
+    position: fixed;
+    bottom: 0;
+    left: 240px; /* same as sidebar width */
+    right: 0;
+    background: #f8f9fa;
+    padding: 6px 12px;
+    text-align: right;
+    border-top: 1px solid #ddd;
+    font-size: 13px;
+    z-index: 100; /* sit above content but below modals */
+    transition: left 0.25s ease-in-out, right 0.25s ease-in-out;
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+}
+
+/* Adjust when sidebar is collapsed */
+body.collapsed .pagination-footer {
+    left: 0px;
+}
+
+/* ===========================
+   BOOTSTRAP PAGINATION LINKS
+   =========================== */
+.pagination-footer .page-link {
+    padding: 3px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+.pagination-footer .page-item.active .page-link {
+    background-color: #207cca;
+    border-color: #207cca;
+    color: #fff;
+}
+
+/* ===========================
+   CUSTOM PAGINATION BUTTONS
+   =========================== */
+.btn-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    text-decoration: none;
+}
+
+/* Blue variant (outline style) */
+.btn-toggle-blue {
+    border: 1px solid #1e5799;
+    color: #1f1f1f;
+    background: transparent;
+}
+
+.btn-toggle-blue:hover {
+    background: linear-gradient(to bottom right, #1e5799, #207cca);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-toggle-blue.active,
+.btn-toggle-blue:active {
+    background: linear-gradient(to bottom right, #1e5799, #207cca);
+    color: #fff;
+    border-color: #1e5799;
+    transform: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Pagination-specific btn-toggle overrides */
+.pagination-footer .btn-toggle {
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    border-radius: 4px !important;
+    min-width: 32px !important;
+}
+
+.pagination-footer .btn-toggle-blue {
+    border: 1px solid #1e5799 !important;
+    color: #1f1f1f !important;
+    background: transparent !important;
+}
+
+.pagination-footer .btn-toggle-blue:hover {
+    background: linear-gradient(to bottom right, #1e5799, #207cca) !important;
+    color: #fff !important;
+}
+
+.pagination-footer .btn-toggle-blue.active,
+.pagination-footer .btn-toggle-blue:active {
+    background: linear-gradient(to bottom right, #1e5799, #207cca) !important;
+    color: #fff !important;
+    border-color: #1e5799 !important;
+}
+
+.pagination-footer .btn-toggle.disabled,
+.pagination-footer .btn-toggle:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ===========================
+   RESPONSIVE / MOBILE
+   =========================== */
+@media (max-width: 768px) {
+    .pagination-footer {
+        left: 0 !important;
+        right: 0 !important;
+        padding: 10px 14px;
+        text-align: center;
+        z-index: 500;
+        background: linear-gradient(
+            180deg,
+            rgba(248, 249, 250, 0.98),
+            rgba(248, 249, 250, 0.95)
+        );
+        backdrop-filter: blur(4px);
+        pointer-events: auto;
+    }
+
+    .pagination-footer .page-link {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .sidebar-overlay {
+        z-index: 10900 !important;
+    }
+    .sidebar {
+        z-index: 11000 !important;
+    }
+}
+
+/* Tablet/Medium screens (601px to 800px) - Optimize layout */
+@media (min-width: 601px) and (max-width: 970px) {
+    .main-content {
+        padding: 0.75rem;
+    }
+
+    /* Stack header for better space usage */
+    .list-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    /* Left section with meta */
+    .list-header > div:first-child {
+        width: 100%;
+    }
+
+    /* Right section with buttons */
+    .list-header-right {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .list-header-right form {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .form-control-head {
+        width: 100%;
+    }
+
+    .list-header-right button {
+        white-space: nowrap;
+    }
+
+    /* Adjust table height for medium screens */
+    .table-container {
+        max-height: calc(100vh - 200px);
+        min-height: calc(100vh - 200px);
+    }
+
+    /* Compact table cells */
+    .patient-table th,
+    .patient-table td {
+        padding: 8px 8px;
+        font-size: 0.875rem;
+    }
+
+    /* Smaller buttons */
+    .list-header-right .btn {
+        padding: 6px 10px;
+        font-size: 0.875rem;
+    }
+
+    /* Adjust header meta spacing */
+    .header-meta {
+        font-size: 0.875rem;
+        gap: 6px;
+    }
+}
+
+/* Mobile (600px and below) - Hide header meta and stack buttons */
+@media (max-width: 600px) {
+    .main-content {
+        padding: 0.5rem;
+        height: 100vh;
+    }
+
+    /* Hide header meta on small screens */
+    .header-meta {
+        display: none !important;
+    }
+
+    .bulk-actions-header {
+        display: none !important;
+    }
+
+    /* Stack header vertically */
+    .list-header {
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Full width button container */
+    .list-header-right {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    /* Full width buttons */
+    .list-header-right button {
+        width: 100%;
+        margin: 0 !important;
+        justify-content: center;
+    }
+
+    /* Full width search form */
+    .list-header-right form {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .form-control-head {
+        flex: 1;
+        width: auto;
+    }
+
+    /* Adjust table - keep proper height */
+    .table-container {
+        max-height: calc(100vh - 250px);
+        min-height: calc(100vh - 250px);
+    }
+
+    .patient-table {
+        min-width: 900px;
+        width: 100%;
+    }
+
+    .patient-table th,
+    .patient-table td {
+        font-size: 0.813rem;
+        padding: 8px 6px;
+        white-space: nowrap;
+    }
+}
+
+/* Extra small devices (400px and below) */
+@media (max-width: 400px) {
+    .main-content {
+        padding: 0.25rem;
+        height: 100vh;
+    }
+
+    .list-header {
+        gap: 0.5rem;
+    }
+
+    .list-header-right {
+        gap: 0.5rem;
+    }
+
+    .table-container {
+        max-height: calc(100vh - 240px);
+        min-height: calc(100vh - 240px);
+    }
+
+    .patient-table {
+        min-width: 850px;
+        width: 100%;
+    }
+
+    .patient-table th,
+    .patient-table td {
+        font-size: 0.75rem;
+        padding: 6px 4px;
+        white-space: nowrap;
+    }
+}

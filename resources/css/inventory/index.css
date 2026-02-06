@@ -1,0 +1,237 @@
+
+.main-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh; /* occupy full viewport height */
+    overflow: hidden; /* confine scroll to inner containers */
+}
+.main-content .container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0; /* allow children to size via flex */
+}
+.main-content .container-fluid > .card {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* prevent card from forcing page scroll */
+}
+.main-content .container-fluid > .card .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* allow inner scroll area */
+}
+
+.inventory-actions .btn {
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+}
+
+/* 2) Filter bar */
+.filter-bar .form-control,
+.filter-bar .form-select {
+    height: 42px;
+    border-radius: 0.5rem;
+    border-color: #e2e8f0;
+    box-shadow: inset 0 1px 2px rgba(16, 24, 40, 0.04);
+    background-color: #f1f3f6;
+}
+
+.form-control,
+.form-select {
+    background-color: #f1f3f6;
+    color: #333;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+    border: 1px solid #ccc;
+}
+
+.filter-bar .input-group-text {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+/* 3) Card */
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+}
+
+.card .card-body {
+    padding: 1.25rem;
+}
+
+/* For medium screens keep a reasonable table width, but allow
+   smaller devices to wrap content instead of forcing horizontal scroll */
+@media (min-width: 768px) and (max-width: 1200px) {
+    #inventoryTable {
+        min-width: 900px; /* allow horizontal scroll on medium devices */
+    }
+}
+
+#inventoryTable th,
+#inventoryTable td {
+    text-overflow: ellipsis; /* show … if content too long */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+
+/* Column widths */
+#inventoryTable th:nth-child(1),
+#inventoryTable td:nth-child(1) {
+    width: 5%;
+}
+/* Item Name */
+#inventoryTable th:nth-child(2),
+#inventoryTable td:nth-child(2) {
+    width: 30%;
+}
+/* Category */
+#inventoryTable th:nth-child(3),
+#inventoryTable td:nth-child(3) {
+    width: 18%;
+}
+/* Unit */
+#inventoryTable th:nth-child(4),
+#inventoryTable td:nth-child(4) {
+    width: 16%;
+}
+/* Total Stock */
+#inventoryTable th:nth-child(5),
+#inventoryTable td:nth-child(5) {
+    width: 13%;
+}
+/* Status */
+#inventoryTable th:nth-child(6),
+#inventoryTable td:nth-child(6) {
+    width: 10%;
+}
+/* Actions header and cell (fix selectors to match 7 columns) */
+#inventoryTable th:nth-child(7),
+#inventoryTable td:nth-child(7) {
+    width: 8%;
+    text-align: center;
+}
+#inventoryTable td:nth-child(7) {
+    position: relative; /* anchor for dropdown */
+    overflow: visible; /* don't clip dropdown */
+}
+
+/* Actions dropdown */
+.actions-dropdown {
+    position: relative;
+}
+.actions-dropdown .dropdown-menu {
+    min-width: 12rem;
+    z-index: 1080; /* above sticky header and scroll container */
+}
+.actions-dropdown .dropdown-item {
+    padding: 0.5rem 0.75rem;
+}
+.actions-dropdown .dropdown-item i {
+    width: 18px;
+    text-align: center;
+}
+
+/* 5) Badges */
+/* .badge.bg-success {
+    background-color: #16a34a !important;
+}
+.badge.bg-warning {
+    background-color: #f59e0b !important;
+    color: #111827 !important;
+}
+.badge.bg-danger {
+    background-color: #ef4444 !important;
+} */
+
+/* 6) Pagination */
+.pagination .page-link {
+    border-radius: 0.5rem;
+    margin: 0 0.125rem;
+}
+.pagination .active .page-link {
+    background: #207cca;
+    border-color: #207cca;
+}
+
+/* 7) Modals */
+.modal-header {
+    background: #f8fafc;
+}
+
+/* 8) Scrollable container + sticky header */
+.inventory-table-wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto; /* vertical scroll */
+    overflow-x: auto; /* horizontal scroll when needed */
+    -webkit-overflow-scrolling: touch;
+}
+
+#inventoryTable {
+    table-layout: fixed;
+    min-width: 700px; /* reduce forcing width; small devices will wrap due to media rules */
+    border-collapse: collapse;
+}
+
+.inventory-table-wrap table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    /* background: linear-gradient(to bottom, #e0e0e0, #bdbdbd); */
+    background: linear-gradient(to bottom, #1e5799, #207cca);
+    border: 1px solid #1e5799;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Reduce visual weight of sticky header on mobile */
+/* @media (max-width: 767px) {
+    .inventory-table-wrap table thead th {
+        background: linear-gradient(to bottom, #1e5799, #207cca);
+        font-size: 0.95rem;
+        padding: 0.5rem 0.5rem;
+    }
+} */
+
+@media (max-width: 480px) {
+  .inventory-table-wrap table th,
+  .inventory-table-wrap table td {
+    font-size: 0.75rem; /* even smaller */
+  }
+
+
+}
+
+/* 9) Icons */
+.icon-gear {
+    width: 25px;
+    height: 25px;
+}
+
+.modal-header {
+    background: linear-gradient(to bottom right, #1e5799, #207cca);
+    color: #fff;
+}
+.modal-header-red {
+    background: linear-gradient(
+        to bottom right,
+        #b22222,
+        #ff7f7f
+    ); /* softer dark red → light rose red */
+    color: #fff;
+}
+.modal-header-green {
+    background: linear-gradient(
+        to bottom right,
+        #228b22,
+        #90ee90
+    ); /* medium green → light pastel green */
+    color: #fff;
+}

@@ -1,0 +1,5 @@
+Route::post('student/register', [StudentAuthController::class, 'register']);
+CREATE ACCOUNT WITHOUT VERIFICATION
+
+Route::post('student/register', [\App\Http\Controllers\RegistrationController::class, 'register'])->name('student.register');
+CREATE ACCOUNT WITH VERIFICATION

@@ -1,0 +1,13 @@
+                    <!-- Medicines Given -->
+                    <div class="col-12">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title text-info mb-3">
+                                    <i class="bi bi-capsule me-2"></i>Medicines Given
+                                </h6>
+                                <div id="modal-medicines">—</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clinical Details -->

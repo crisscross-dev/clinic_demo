@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Clinic - Patient Portal</title>
+    <!-- External CSS Libraries -->
+    @vite([
+    'resources/css/app.css',
+    'resources/css/index.css',
+    ])
+    <!-- Ensure background image uses correct public path -->
+    <style>
+        body {
+            background-image: url('{{ asset("images/background.png") }}');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Topbar with Login -->
+        <div class="topbar">
+            <a href="{{ route('admin.login') }}" class="login-btn">
+                <i class="fas fa-right-to-bracket"></i>
+                Login
+            </a>
+        </div>
+        <!-- Header -->
+        <div class="header">
+            <div class="clinic-logo">
+                <img src="{{ asset('images/logo2_pdf.png') }}" alt="Samuel Clinic Logo" />
+            </div>
+            <h1>Clinic System Demo</h1>
+            <h2>Health and Wellness Services Unit</h2><br>
+            <p>Professional Healthcare Services</p>
+            <p>Your Health, Our Priority</p>
+        </div>
+
+        @if(session('success'))
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i> {{ session('success') }}
+        </div>
+        @endif
+
+        <!-- Call to Action Section -->
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Student Health Registration</h2>
+                <p class="cta-subtitle">
+                    Complete your health information form to register with our clinic. This helps us provide the best possible care for your health needs.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#services" onclick="scrollToServices()" class="btn-cta btn-secondary-cta">
+                        <i class="fas fa-info-circle"></i>
+                        Learn About Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature badges -->
+        <div class="features-row">
+            <div class="feature-badge">
+                <i class="fas fa-shield-heart"></i>
+                <span>Trusted Care</span>
+            </div>
+            <div class="feature-badge">
+                <i class="fas fa-lock"></i>
+                <span>Secure Records</span>
+            </div>
+            <div class="feature-badge">
+                <i class="fas fa-bolt"></i>
+                <span>Fast Service</span>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="patient-section" id="services">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive healthcare services for you and your family</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>General Medicine</h3>
+                    <p>Comprehensive primary care for all ages including routine check-ups and preventive care.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Cardiology</h3>
+                    <p>Specialized heart care including diagnostics, treatment, and cardiovascular health management.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3>Diagnostics</h3>
+                    <p>Advanced diagnostic services including laboratory tests, imaging, and health screenings.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Care</h3>
+                    <p>24/7 emergency medical services for urgent health conditions and critical care needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @vite([
+    'resources/js/app.js',
+    'resources/js/index.js',
+    ])
+
+    @if(session('success'))
+    <script>
+        window.showFormOnLoad = true;
+    </script>
+    @endif
+</body>
+
+</html>

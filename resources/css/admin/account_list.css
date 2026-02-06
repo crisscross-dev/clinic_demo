@@ -1,0 +1,466 @@
+/* Account List - Student Accounts Table Styles */
+
+/* Layout wrappers */
+html,
+body {
+    height: 100%;
+}
+body {
+    overflow-y: hidden;
+}
+.main-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.records-scrollable {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.table-container {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    overflow: auto;
+    max-height: calc(100vh - 180px);
+    min-height: 400px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Form control */
+.form-control-head {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    width: 180px;
+}
+
+.form-control-head:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+/* List header */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.list-header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Header meta styling */
+.header-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.header-meta .divider {
+    color: #dee2e6;
+    margin: 0 4px;
+}
+
+/* Bulk actions in header */
+.bulk-actions-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    animation: slideInRight 0.3s ease-out;
+}
+
+.bulk-actions-header .btn-sm {
+    padding: 4px 12px;
+    font-size: 0.875rem;
+}
+
+.bulk-actions-header .selected-count {
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Table styles */
+.patient-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    position: relative;
+}
+
+.patient-table thead th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: #207cca;
+    color: white;
+    font-weight: 600;
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-consent thead th {
+    background: linear-gradient(to bottom, #1e5799, #207cca);
+    color: white;
+}
+
+.patient-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 101;
+}
+
+.patient-table tbody td {
+    padding: 8px 10px;
+    color: #111827;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 2;
+    border-bottom: 1px solid #bec2c9;
+}
+
+.patient-table tbody tr:hover {
+    background: #e2e8f0;
+}
+
+/* Column sizing for account list table - 8 columns total */
+/* Checkbox column */
+.patient-table th:nth-child(1),
+.patient-table td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+
+/* # column */
+.patient-table th:nth-child(2),
+.patient-table td:nth-child(2) {
+    width: 60px;
+    text-align: center;
+}
+
+/* Full Name column */
+.patient-table th:nth-child(3),
+.patient-table td:nth-child(3) {
+    width: 20%;
+}
+
+/* Username (Email) column */
+.patient-table th:nth-child(4),
+.patient-table td:nth-child(4) {
+    width: 22%;
+}
+
+/* Department column */
+.patient-table th:nth-child(5),
+.patient-table td:nth-child(5) {
+    width: 18%;
+}
+
+/* Course/Section column */
+.patient-table th:nth-child(6),
+.patient-table td:nth-child(6) {
+    width: 20%;
+}
+
+/* Year Level column */
+.patient-table th:nth-child(7),
+.patient-table td:nth-child(7) {
+    width: 10%;
+    text-align: center;
+}
+
+/* Actions column */
+.patient-table th:nth-child(8),
+.patient-table td:nth-child(8) {
+    width: 150px;
+    text-align: center;
+}
+
+/* Utilities */
+.text-truncate {
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-muted {
+    color: #6b7280;
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Checkbox styling */
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.form-check-input:indeterminate {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.patient-table th:first-child,
+.patient-table td:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Action buttons */
+.btn-edit-account {
+    padding: 6px 10px;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-edit-account:hover {
+    background: rgba(13, 110, 253, 0.06);
+}
+
+/* SweetAlert2 Custom Styles */
+.btn-space {
+    margin: 0 4px !important;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE & TABLET
+   ============================================ */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 0.75rem;
+    }
+
+    .list-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+
+    .list-header-right {
+        width: 100%;
+    }
+
+    .list-header-right form {
+        width: 100%;
+    }
+
+    .form-control-head {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+    }
+
+    .header-meta {
+        font-size: 0.875rem;
+    }
+
+    .table-container {
+        max-height: 65vh;
+        min-height: 65vh;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    .patient-table {
+        min-width: 900px;
+    }
+
+    .patient-table th,
+    .patient-table td {
+        font-size: 0.875rem;
+        padding: 10px 8px;
+    }
+
+    .btn-general {
+        padding: 6px 10px;
+        font-size: 0.875rem;
+    }
+
+    .bulk-actions-header .btn-sm {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile (576px and below) */
+@media (max-width: 576px) {
+    .main-content {
+        padding: 0.5rem;
+        height: 100vh;
+    }
+
+    .list-header {
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .header-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        font-size: 0.813rem;
+    }
+
+    .header-meta .divider {
+        display: none;
+    }
+
+    .header-meta span {
+        display: block;
+        width: 100%;
+    }
+
+    .form-control-head {
+        font-size: 0.875rem;
+        padding: 8px 10px;
+    }
+
+    .btn-general {
+        padding: 8px 12px;
+        font-size: 0.875rem;
+        white-space: nowrap;
+    }
+
+    .table-container {
+        max-height: calc(100vh - 200px);
+        min-height: 300px;
+        border-radius: 6px;
+    }
+
+    .patient-table {
+        min-width: 900px;
+        width: 100%;
+    }
+
+    .patient-table th,
+    .patient-table td {
+        font-size: 0.813rem;
+        padding: 8px 6px;
+        white-space: nowrap;
+    }
+
+    .patient-table th {
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .patient-table td .btn-general {
+        padding: 6px 8px;
+    }
+
+    .patient-table td .btn-general i {
+        font-size: 0.875rem;
+    }
+
+    .bulk-actions-header {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .bulk-actions-header .btn-sm {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .bulk-actions-header .selected-count {
+        font-size: 0.75rem;
+        width: 100%;
+        text-align: left;
+    }
+
+    .pagination-container {
+        padding: 0.5rem;
+    }
+
+    .pagination-footer {
+        font-size: 0.813rem;
+    }
+}
+
+/* Extra small devices (400px and below) */
+@media (max-width: 400px) {
+    .main-content {
+        padding: 0.25rem;
+        height: 100vh;
+    }
+
+    .header-meta {
+        font-size: 0.75rem;
+    }
+
+    .form-control-head {
+        font-size: 0.813rem;
+        padding: 6px 8px;
+    }
+
+    .btn-general {
+        padding: 6px 10px;
+        font-size: 0.813rem;
+    }
+
+    .table-container {
+        max-height: calc(100vh - 180px);
+        min-height: 250px;
+    }
+
+    .patient-table {
+        min-width: 850px;
+    }
+
+    .patient-table th,
+    .patient-table td {
+        font-size: 0.75rem;
+        padding: 6px 4px;
+    }
+
+    .patient-table td .btn-general {
+        padding: 4px 6px;
+    }
+}

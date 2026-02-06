@@ -1,0 +1,225 @@
+
+/* Section Titles and Subtitles */
+.section-title {
+    color: #1a1a1a;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-subtitle {
+    color: #6b7280;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+/* Alert Messages */
+.alert {
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Checkbox Containers */
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Standard Checkbox Styles */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    user-select: none;
+    width: 100%;
+}
+
+.form-check:hover {
+    border-color: #3b82f6;
+    background: #f8fafc;
+}
+
+.form-check input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.form-check input[type="checkbox"]:checked {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.form-check input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-check.checked {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+/* Consent Checkbox Styles */
+.consent-checkbox { 
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    width: 100%;
+}
+
+.consent-label:hover {
+    border-color: #3b82f6;
+    background: #f8fafc;
+}
+
+.consent-label.no-consent {
+    background: #fef3c7;
+    border-color: #f59e0b;
+}
+
+.consent-label.no-consent:hover {
+    background: #fde68a;
+    border-color: #d97706;
+}
+
+.consent-label input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-top: 2px;
+    pointer-events: none;
+}
+
+.consent-label input[type="checkbox"]:checked {
+    background: #10b981;
+    border-color: #10b981;
+}
+
+.consent-label.no-consent input[type="checkbox"]:checked {
+    background: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.consent-label input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.consent-label.checked {
+    border-color: #10b981;
+    background: #ecfdf5;
+}
+
+.consent-label.no-consent.checked {
+    border-color: #f59e0b;
+    background: #fef3c7;
+}
+
+
+.modal-header-blue {
+    background: linear-gradient(to bottom right, #1e5799, #207cca);
+    color: #fff;
+}
+.modal-header-lightblue {
+    background-color: #c9ddf0 !important;
+}
+.modal-header-red {
+    background: linear-gradient(
+        to bottom right,
+        #b22222,
+        #ff7f7f
+    ); /* softer dark red → light rose red */
+    color: #fff;
+}
+.modal-header-green {
+    background: linear-gradient(
+        to bottom right,
+        #228b22,
+        #90ee90
+    ); /* medium green → light pastel green */
+    color: #fff;
+}
+
+.card-header-lightblue {
+        background-color: #c9ddf0 !important;
+        border-radius: 10px 10px 0 0;
+    }
+
+.bg-gray {
+    background-color: #e0dbdbff !important;
+    }

@@ -1,0 +1,61 @@
+/* Wrapper clickable area */
+.checkbox {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover state for wrapper */
+.checkbox:hover {
+    border-color: #1e88e5;
+    box-shadow: 0 0 4px rgba(30, 136, 229, 0.25);
+}
+
+/* Hide the default checkbox */
+.checkbox .form-check-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #6c757d;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    margin-right: 8px;
+}
+
+/* Checked state */
+.checkbox .form-check-input:checked {
+    background-color: #1e88e5; /* blue */
+    border-color: #1e88e5;
+}
+
+/* Checkmark (pseudo-element) */
+.checkbox .form-check-input:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Label style */
+.checkbox .form-check-label {
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    margin: 0;
+}

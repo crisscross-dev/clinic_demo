@@ -1,0 +1,120 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "litepicker/dist/css/litepicker.css";
+@import "./shared/base.css";
+@import "./shared/components.css";
+@import "./shared/buttons.css";
+
+/* Global app styles */
+:root {
+    --brand-primary: #1e5799;
+    --brand-accent: #198754; /* Bootstrap success */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.main-content {
+    background-color: #f5ede0 !important;
+    /*Light Beige*/
+    padding: 80px 20px 20px 20px !important;
+    margin-left: 240px !important;
+    margin-top: 0px !important;
+    display: block !important;
+    /* let content define height */
+     min-height: 100vh !important;
+    /* ensure full-page height */
+    overflow: visible !important;
+    /* avoid nested scrollbars */
+}
+
+/* Respond to collapsed sidebar: when sidebar is hidden, content takes full width */
+body.collapsed .main-content {
+    margin-left: 0 !important;
+}
+
+.header-bar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.main-header {
+    margin-right: 20px;
+    font-weight: 600;
+    color: #1e5799;
+    border-bottom: 4px solid #207cca;
+}
+
+.main-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    padding-top: 1rem;
+}
+
+.table th {
+    /* prevent header wrap */
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+.btn-primary:hover {
+    filter: brightness(0.95);
+}
+
+/* SweetAlert2-like modal animation */
+@keyframes sweetPop {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal.fade .modal-dialog {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: none; /* disable default transition */
+}
+
+.modal.fade.show .modal-dialog {
+    animation: sweetPop 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@media (max-width: 768px) {
+    .btn-sidebar{
+    font-size: 15px; 
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0px 10px 15px 10px !important;
+  }
+  .btn-sidebar{
+    font-size: 15px; 
+    padding: 8px 10px;
+  }
+}

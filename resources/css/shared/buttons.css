@@ -1,0 +1,267 @@
+/* Base button (reusable everywhere) */
+.btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+    box-shadow: 0 2px 6px rgba(23, 162, 184, 0.15);
+    text-decoration: none;
+}
+
+/* Action buttons (if partial uses these)
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border: 1px solid transparent;
+    transition: background-color 0.15s ease, color 0.15s ease,
+        border-color 0.15s ease;
+    cursor: pointer;
+} */
+.action-buttons.pending-btn {
+    gap: 10px;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important; /* optional: vertical centering */
+    width: 100%; /* ensures it centers in the available space */
+}
+.large-icon {
+    font-size: 20px; /* adjust as needed */
+}
+/* Simple action buttons */
+.btn-general {
+    font-size: clamp(13px, 1.2vw, 15px);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px; /* was 6px → now slightly rounder */
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-general:active {
+    transform: scale(0.96); /* press down effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* reduce shadow when pressed */
+}
+.btn-space {
+    margin: 0 6px; /* horizontal spacing between buttons */
+}
+
+.btn-green {
+    background: linear-gradient(to bottom right, #2e8b57, #3cb371); /* forest green → medium sea green */
+    color: #fff;
+}
+.btn-green:hover {
+    background: linear-gradient(to top left, #4caf50, #006400); /* brighter green → dark green */
+    transform: translateY(-2px); /* slight upward lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* subtle shadow */
+}
+
+
+.btn-blue {
+    background: linear-gradient(to bottom right, #1e5799, #207cca);
+    color: #fff;
+}
+.btn-blue:hover {
+    background: linear-gradient(to top left, #3399ff, #003366);
+    transform: translateY(-2px); /* slight upward lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* subtle shadow */
+}
+
+.btn-red {
+    background: linear-gradient(to bottom right, #b31217, #e52d27); /* deep red → bright red */
+    color: #fff;
+}
+.btn-red:hover {
+    background: linear-gradient(to top left, #ff4b2b, #800000); /* lighter red → dark maroon */
+    transform: translateY(-2px); /* slight upward lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* subtle shadow */
+}
+
+.btn-orange {
+    background: linear-gradient(to bottom right, #a84300, #ff8c00); /* deep burnt orange → strong orange */
+    color: #fff;
+}
+.btn-orange:hover {
+    background: linear-gradient(to top left, #ff9933, #663300); /* lighter orange → dark brownish-orange */
+    transform: translateY(-2px); /* slight upward lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* subtle shadow */
+}
+
+
+
+.btn-gray {
+    background: linear-gradient(to bottom right, #6c757d, #adb5bd); /* gray gradient */
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gray:hover {
+    background: linear-gradient(to top left, #868e96, #495057); /* darker gray on hover */
+    transform: translateY(-2px); /* slight upward lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* subtle shadow */
+}
+
+.btn-lightgray {
+    background: linear-gradient(to bottom right, #dee2e6, #f8f9fa); /* light gray gradient */
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-lightgray:hover {
+    background: linear-gradient(to top left, #ced4da, #adb5bd); /* slightly darker on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Size modifiers */
+.btn-xsm { padding: 4px 8px; font-size: 0.75rem; }
+.btn-sm { padding: 6px 10px; font-size: 0.75rem; }
+.btn-lg { 
+    padding: 5px 10px; 
+    font-size: 1rem; 
+    border-radius: 9px; 
+}
+
+
+/* Actions dropdown (gear) */
+.actions-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.actions-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 6px;
+    background: #ffffff;
+    cursor: pointer;
+}
+.actions-toggle:hover {
+    background: #f9fafb;
+}
+.actions-toggle img {
+    display: block;
+}
+
+.actions-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    min-width: 180px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb; /* gray-200 */
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    padding: 6px 0; /* tighter top/bottom padding */
+    z-index: 10000;
+    padding-right: 8px;
+}
+
+.actions-menu .btn,
+.actions-menu a,
+.actions-menu button,
+.actions-menu .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 0;
+    background: transparent;
+    color: #111827;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.actions-menu .btn:hover,
+.actions-menu a:hover,
+.actions-menu button:hover,
+.actions-menu .menu-item:hover {
+    background: #f3f4f6;
+    color: #111827;
+    text-decoration: none;
+    cursor: pointer;
+    transform: translateX(4px); /* subtle text movement */
+}
+
+.actions-menu .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.actions-menu form {
+    margin: 0;
+}
+
+.actions-menu .btn i,
+.actions-menu .menu-item i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Optional: Divider between grouped menu items */
+.actions-menu .menu-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 6px 0;
+}
+
+
+
+
+/* Medium screens (≤992px) */
+@media (max-width: 992px) {
+    .btn-general {
+        font-size: 13px;
+        padding: 7px 12px;
+        /* min-width: 75px; */
+    }
+}
+
+/* Tablets (≤768px) */
+@media (max-width: 768px) {
+    .btn-general {
+        font-size: 12.5px;
+        padding: 6px 10px;
+    }
+}
+
+/* Extra small phones (≤400px) */
+@media (max-width: 400px) {
+    .btn-general {
+        font-size: 12px;
+        padding: 6.5px 8.5px;
+    }
+}

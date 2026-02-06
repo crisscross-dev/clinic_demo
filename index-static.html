@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Samuel Clinic - Patient Portal</title>
+
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Bootstrap Icons -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+            rel="stylesheet"
+        />
+        <!-- FontAwesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <!-- Custom CSS - Static version -->
+        <style>
+            /* Basic styling for hosting without Vite */
+            body {
+                background-image: url("images/background.png");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                background-attachment: fixed;
+                min-height: 100vh;
+                position: relative;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            /* Topbar */
+            .topbar {
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 1000;
+                padding: 15px 20px;
+            }
+
+            .login-btn {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 25px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            }
+
+            .login-btn:hover {
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            }
+
+            /* Header */
+            .header {
+                text-align: center;
+                margin-top: 60px;
+                margin-bottom: 40px;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .clinic-logo img {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+
+            .header h1 {
+                color: #2c3e50;
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .header h2 {
+                color: #34495e;
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+
+            .header p {
+                color: #7f8c8d;
+                font-size: 1.1rem;
+                margin: 5px 0;
+            }
+
+            /* CTA Section */
+            .cta-section {
+                text-align: center;
+                margin: 50px 0;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 50px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .cta-title {
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: #2c3e50;
+                margin-bottom: 15px;
+            }
+
+            .cta-subtitle {
+                font-size: 1.2rem;
+                color: #7f8c8d;
+                margin-bottom: 30px;
+                line-height: 1.6;
+            }
+
+            .cta-buttons {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .btn-cta {
+                padding: 15px 30px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .btn-primary-cta {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            }
+
+            .btn-primary-cta:hover {
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            }
+
+            .btn-secondary-cta {
+                background: white;
+                color: #667eea;
+                border: 2px solid #667eea;
+            }
+
+            .btn-secondary-cta:hover {
+                background: #667eea;
+                color: white;
+                transform: translateY(-3px);
+            }
+
+            /* Feature badges */
+            .features-row {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                margin: 50px 0;
+                flex-wrap: wrap;
+            }
+
+            .feature-badge {
+                background: rgba(255, 255, 255, 0.95);
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .feature-badge:hover {
+                transform: translateY(-5px);
+            }
+
+            .feature-badge i {
+                font-size: 2rem;
+                color: #667eea;
+                margin-bottom: 10px;
+            }
+
+            /* Services Section */
+            .patient-section {
+                background: rgba(255, 255, 255, 0.95);
+                padding: 50px;
+                border-radius: 20px;
+                margin: 40px 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .section-title {
+                text-align: center;
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #2c3e50;
+                margin-bottom: 15px;
+            }
+
+            .section-subtitle {
+                text-align: center;
+                font-size: 1.2rem;
+                color: #7f8c8d;
+                margin-bottom: 40px;
+            }
+
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .service-card {
+                background: white;
+                padding: 30px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+
+            .service-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            }
+
+            .service-icon {
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 20px;
+            }
+
+            .service-icon i {
+                font-size: 2rem;
+                color: white;
+            }
+
+            .service-card h3 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 15px;
+            }
+
+            .service-card p {
+                color: #7f8c8d;
+                line-height: 1.6;
+            }
+
+            /* Alert */
+            .alert {
+                padding: 15px 20px;
+                border-radius: 10px;
+                margin: 20px 0;
+            }
+
+            .alert-success {
+                background-color: #d4edda;
+                border: 1px solid #c3e6cb;
+                color: #155724;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .header h1 {
+                    font-size: 2rem;
+                }
+                .header h2 {
+                    font-size: 1.2rem;
+                }
+                .cta-title {
+                    font-size: 1.8rem;
+                }
+                .cta-buttons {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .features-row {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- Topbar with Login -->
+            <div class="topbar">
+                <a href="admin/login.php" class="login-btn">
+                    <i class="fas fa-right-to-bracket"></i>
+                    Login
+                </a>
+            </div>
+
+            <!-- Header -->
+            <div class="header">
+                <div class="clinic-logo">
+                    <img src="images/logo2_pdf.png" alt="Samuel Clinic Logo" />
+                </div>
+                <h1>Clinic System Demo</h1>
+                <h2>Health and Wellness Services Unit</h2>
+                <br />
+                <p>Professional Healthcare Services</p>
+                <p>Your Health, Our Priority</p>
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2 class="cta-title">Student Health Registration</h2>
+                    <p class="cta-subtitle">
+                        Complete your health information form to register with
+                        our clinic. This helps us provide the best possible care
+                        for your health needs.
+                    </p>
+                    <div class="cta-buttons">
+                        <a
+                            href="admin/login.php"
+                            class="btn-cta btn-primary-cta"
+                        >
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </a>
+
+                        <a
+                            href="#services"
+                            onclick="scrollToServices()"
+                            class="btn-cta btn-secondary-cta"
+                        >
+                            <i class="fas fa-info-circle"></i>
+                            Learn About Our Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature badges -->
+            <div class="features-row">
+                <div class="feature-badge">
+                    <i class="fas fa-shield-heart"></i>
+                    <span>Trusted Care</span>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>Secure Records</span>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Fast Service</span>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="patient-section" id="services">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">
+                    Comprehensive healthcare services for you and your family
+                </p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>General Medicine</h3>
+                        <p>
+                            Comprehensive primary care for all ages including
+                            routine check-ups and preventive care.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Cardiology</h3>
+                        <p>
+                            Specialized heart care including diagnostics,
+                            treatment, and cardiovascular health management.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <h3>Diagnostics</h3>
+                        <p>
+                            Advanced diagnostic services including laboratory
+                            tests, imaging, and health screenings.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <h3>Emergency Care</h3>
+                        <p>
+                            24/7 emergency medical services for urgent health
+                            conditions and critical care needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Simple JavaScript for smooth scrolling -->
+        <script>
+            function scrollToServices() {
+                const servicesSection = document.getElementById("services");
+                if (servicesSection) {
+                    servicesSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            }
+        </script>
+    </body>
+</html>

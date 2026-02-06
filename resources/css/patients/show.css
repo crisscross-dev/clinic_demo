@@ -1,0 +1,204 @@
+/* Patient Show Page Styles */
+
+.patient-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.patient-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.patient-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.back-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.section {
+    margin-top: 14px;
+}
+.section-title {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: #374151;
+    font-weight: 600;
+}
+
+.patient-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 14px;
+}
+
+.patient-grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+}
+
+/* Cells */
+.patient-grid-1 > div,
+.patient-grid-2 > div {
+    padding: 10px 12px;
+    background: #fff;
+    border: 1px solid #eef2f7;
+    border-radius: 8px;
+}
+
+/* Label/value inline style using <strong> as label */
+.patient-grid-1 > div strong,
+.patient-grid-2 > div strong {
+    display: inline-block;
+    min-width: 150px;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+/* Meta area */
+.patient-meta {
+    color: #6b7280;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 14px;
+} 
+
+/* Divider */
+.patient-divider {
+    margin: 12px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+
+
+/* ============ Minimal styles to mirror patient_details ============ */
+.information-details {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 10px;
+}
+.information-details-header {
+    background-color: #c9ddf0; /* Light blue */
+    margin: -14px -14px 10px; /* pull to card edges, add spacing below */
+    padding: 10px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.information-details h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #1e1e1e;
+}
+
+.information-details h3 {
+    font-size: 18px;
+    margin: 0; /* header provides spacing */
+    color: #374151;
+    font-weight: bold;
+}
+
+.details-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 8px 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details-list li {
+    font-size: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.details-list strong {
+    display: inline-block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-right: 6px;
+}
+
+.bullet-list {
+    padding-left: 20px;
+    margin: 4px 0;
+}
+
+.bullet-list li {
+    list-style-type: disc;
+    margin-left: 10px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+
+.highlighted-value {
+    font-weight: 700;        /* bold */
+    background-color: #e6f0fa; /* same as header */
+    padding: 2px 6px;        /* little breathing room */
+    border-radius: 4px;      /* rounded edges for nicer look */
+    color: #111827;          /* dark text for readability */
+}
+
+.form-control,.form-select {
+    background-color: #f1f3f6;
+    color: #333;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+    border: 1px solid #ccc;
+}
+
+/* modal background blur */
+.modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.8); /* slight dark overlay */
+}
+
+.modal-header {
+    background-color: #c9ddf0; /* Light blue */
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+    .patient-grid-2,
+    .patient-meta {
+        grid-template-columns: 1fr;
+    }
+    .patient-grid-1 > div strong,
+    .patient-grid-2 > div strong {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .details-list {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+}

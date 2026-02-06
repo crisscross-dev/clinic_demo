@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FormData Test</title>
+    </head>
+    <body>
+        <h2>FormData Reuse Test</h2>
+        <form id="test-form">
+            <input type="text" name="email" value="test@example.com" />
+            <input type="hidden" name="_token" value="test-token" />
+            <button type="submit">Test</button>
+        </form>
+
+        <div id="results"></div>
+
+        <script>
+            document
+                .getElementById("test-form")
+                .addEventListener("submit", async function (e) {
+                    e.preventDefault();
+
+                    const results = document.getElementById("results");
+                    results.innerHTML = "<h3>Test Results:</h3>";
+
+                    // Test 1: Using same FormData object twice
+                    results.innerHTML +=
+                        "<h4>Test 1: Reusing FormData object</h4>";
+
+                    const formData = new FormData(this);
+
+                    // First usage
+                    const entries1 = [];
+                    for (let [key, value] of formData.entries()) {
+                        entries1.push(`${key}: ${value}`);
+                    }
+                    results.innerHTML += `<p>First read: ${entries1.join(
+                        ", "
+                    )}</p>`;
+
+                    // Second usage (should be empty)
+                    const entries2 = [];
+                    for (let [key, value] of formData.entries()) {
+                        entries2.push(`${key}: ${value}`);
+                    }
+                    results.innerHTML += `<p>Second read: ${
+                        entries2.length === 0 ? "EMPTY!" : entries2.join(", ")
+                    }</p>`;
+
+                    // Test 2: Creating fresh FormData each time
+                    results.innerHTML +=
+                        "<h4>Test 2: Creating fresh FormData</h4>";
+
+                    const formData2 = new FormData(this);
+                    const entries3 = [];
+                    for (let [key, value] of formData2.entries()) {
+                        entries3.push(`${key}: ${value}`);
+                    }
+                    results.innerHTML += `<p>Fresh FormData: ${entries3.join(
+                        ", "
+                    )}</p>`;
+
+                    // Test 3: Manual FormData creation
+                    results.innerHTML +=
+                        "<h4>Test 3: Manual FormData creation</h4>";
+
+                    const email = this.querySelector(
+                        'input[name="email"]'
+                    ).value;
+                    const token = this.querySelector(
+                        'input[name="_token"]'
+                    ).value;
+
+                    const manualFormData = new FormData();
+                    manualFormData.append("email", email);
+                    manualFormData.append("_token", token);
+
+                    const entries4 = [];
+                    for (let [key, value] of manualFormData.entries()) {
+                        entries4.push(`${key}: ${value}`);
+                    }
+                    results.innerHTML += `<p>Manual FormData: ${entries4.join(
+                        ", "
+                    )}</p>`;
+
+                    results.innerHTML +=
+                        "<p><strong>Conclusion: FormData objects can only be read once! The fix creates fresh FormData for each request.</strong></p>";
+                });
+        </script>
+    </body>
+</html>
